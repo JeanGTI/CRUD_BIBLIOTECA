@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Autor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\QueryException;
+
 
 class controllerAutor extends Controller
 {
@@ -38,10 +40,17 @@ class controllerAutor extends Controller
 
         public function deleta_Autor($id, Request $request)
         {
-            $autor = Autor::findOrFail($id);
-            $autor->delete();
-            \Session::flash('mensagem_sucesso','Autor excluido com sucesso!');
-            return Redirect::to ('autor');
+            try{
+                $autor = Autor::findOrFail($id);
+                $autor->delete();
+                \Session::flash('mensagem_sucesso','Autor excluido com sucesso!');
+                return Redirect::to ('autor');
+            }
+            catch(QueryException $e) {
+                \Session::flash('mensagem_aviso','Autor não pode ser excluido pois esta ligado a um Livro!');
+                return Redirect::to ('autor');
+           
 
         }
+    }
 }

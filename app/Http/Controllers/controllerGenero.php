@@ -5,6 +5,7 @@ use App\Genero;
 use App\Livro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\QueryException;
 
 class controllerGenero extends Controller
 {
@@ -41,10 +42,16 @@ class controllerGenero extends Controller
 
         public function deleta_Genero($id, Request $request)
         {
-            $genero = Genero::findOrFail($id);
-            $genero->delete();
-            \Session::flash('mensagem_sucesso','Genero excluido com sucesso!');
-            return Redirect::to ('genero');
+            try{
+                $genero = Genero::findOrFail($id);
+                $genero->delete();
+                \Session::flash('mensagem_sucesso','Genero excluido com sucesso!');
+                return Redirect::to ('genero');
+                } catch(QueryException $e) {
+                    \Session::flash('mensagem_aviso','Genero não pode ser excluido pois esta ligado a um Livro!');
+                    return Redirect::to ('genero');
+
+            }
 
         }
 

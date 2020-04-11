@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Editora;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\QueryException;
+
 
 class controllerEditora extends Controller
 {
@@ -38,11 +40,15 @@ class controllerEditora extends Controller
 
         public function deleta_Editora($id, Request $request)
         {
-            $editora = Editora::findOrFail($id);
-            $editora->delete();
-            \Session::flash('mensagem_sucesso','Editora excluida com sucesso!');
-            return Redirect::to ('editora');
-
+            try{
+                $editora = Editora::findOrFail($id);
+                $editora->delete();
+                \Session::flash('mensagem_sucesso','Editora excluida com sucesso!');
+                return Redirect::to ('editora');
+            }
+            catch(QueryException $e){
+                \Session::flash('mensagem_aviso','Editora não pode ser excluido pois esta ligado a um Livro!');
+                return Redirect::to ('editora');
+            }
         }
-
 }
