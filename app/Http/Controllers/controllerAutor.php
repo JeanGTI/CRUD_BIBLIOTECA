@@ -31,17 +31,17 @@ class controllerAutor extends Controller
             $autor = Autor::findOrFail($id);
             $autor->update($request->all());
             \Session::flash('mensagem_sucesso','Autor atualizado com sucesso!');
-            return Redirect::to ('autores/'.$autor->id.'/editar');
+            return Redirect::to ('autor/'.$autor->id.'/edita');
             
 
         }
 
         public function deleta_Autor($id, Request $request)
         {
-            $autor = Autore::findOrFail($id);
+            $autor = Autor::findOrFail($id);
             $autor->delete();
             \Session::flash('mensagem_sucesso','Autor excluido com sucesso!');
-            return Redirect::to ('autores');
+            return Redirect::to ('autor');
 
         }
 }
