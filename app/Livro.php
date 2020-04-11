@@ -6,15 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Livro extends Model
 {
+protected $table='livro';
+    
     protected $fillable = [
         'titulo',
         'ano_lancamento',
-        'generos_id',
-        'editoras_id',
-        'autores_id'
+        'genero_id',
+        'editora_id',
+        'autor_id'
     ];
     protected $guarded = ['id', 'created_at', 'update_at'];
-    protected $table = 'livro';
+    
 
     public function genero(){
 

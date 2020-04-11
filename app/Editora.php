@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Editora extends Model
 {
+    protected $table = 'Editora';
+
     protected $fillable = [
         'nome'
     ];
