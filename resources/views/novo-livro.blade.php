@@ -6,7 +6,7 @@
             <div class="col-md-10 col-md-offset-1">
                     <div class="card-header">
                         Informe os dados do livro!
-                        <a class="float-right" href="{{url('livro')}}">LIVROS CADASTRADOS</a>
+                        <a class="btn btn-primary float-right" href="{{url('livro')}}">LIVROS CADASTRADOS</a>
                     </div>
 
                 <div class="card-block">

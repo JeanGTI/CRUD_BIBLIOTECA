@@ -6,7 +6,7 @@
             <div class="col-md-10 col-md-offset-1">
                     <div class="card-header">
                         Informe os dados da editora!
-                        <a class="float-right" href="{{url('editora')}}">EDITORAS CADASTRADAS</a>
+                        <a class="btn btn-primary float-right" href="{{url('editora')}}">EDITORAS CADASTRADAS</a>
                     </div>
 
                 <div class="card-block">

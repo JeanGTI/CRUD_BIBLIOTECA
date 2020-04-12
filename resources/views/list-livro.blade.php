@@ -6,7 +6,7 @@
             <div class="col-md-10 col-md-offset-1">
                     <div class="card-header">
                         Livros
-                        <a class="float-right" href="{{url('livro/novo')}}">NOVO LIVRO</a>
+                        <a class="btn btn-primary float-right" href="{{url('livro/novo')}}">NOVO LIVRO</a>
                     </div>
 
                 <div class="card-block">

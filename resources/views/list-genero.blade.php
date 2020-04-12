@@ -6,7 +6,7 @@
             <div class="col-md-10 col-md-offset-1">
                     <div class="card-header">
                         Generos
-                        <a class="float-right" href="{{url('genero/novo')}}">NOVO GENERO</a>
+                        <a class="btn btn-primary float-right" href="{{url('genero/novo')}}">NOVO GENERO</a>
                     </div>
 
                 <div class="card-block">

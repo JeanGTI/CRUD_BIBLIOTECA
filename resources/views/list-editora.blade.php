@@ -6,7 +6,7 @@
             <div class="col-md-10 col-md-offset-1">
                     <div class="card-header">
                         Editoras
-                        <a class="float-right" href="{{url('editora/novo')}}">NOVA EDITORA</a>
+                        <a class="btn btn-primary float-right" href="{{url('editora/novo')}}">NOVA EDITORA</a>
                     </div>
 
                 <div class="card-block">

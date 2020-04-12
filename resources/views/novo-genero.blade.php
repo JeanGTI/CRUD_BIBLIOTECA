@@ -6,7 +6,7 @@
             <div class="col-md-10 col-md-offset-1">
                     <div class="card-header">
                         Informe os dados do genero!
-                        <a class="float-right" href="{{url('genero')}}">GENEROS CADASTRADOS</a>
+                        <a class="btn btn-primary float-right" href="{{url('genero')}}">GENEROS CADASTRADOS</a>
                     </div>
 
                 <div class="card-block">
