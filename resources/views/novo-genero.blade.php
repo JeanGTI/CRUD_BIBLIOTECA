@@ -15,7 +15,7 @@
                     <div class = "alert alert-success">{{Session::get('mensagem_sucesso')}}</div>
                 @endif     
                 @if(Session::has('mensagem_aviso'))
-                    <div class = "alert alert-error">{{Session::get('mensagem_aviso')}}</div>
+                    <div class = "alert alert-warning">{{Session::get('mensagem_aviso')}}</div>
                 @endif          
 
                 @if(Request::is('*/edita'))
