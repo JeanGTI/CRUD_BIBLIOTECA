@@ -17,10 +17,18 @@ class controllerAutor extends Controller
         return view('novo-autor');
     }
         public function salva_Autor(Request $request) {
-            $autor = new Autor();
-            $autor = $autor->create($request->all());
-            \Session::flash('mensagem_sucesso','Autor cadastrado com sucesso!');
-            return view('novo-autor');
+            try{
+                $autor = new Autor();
+                $autor = $autor->create($request->all());
+                \Session::flash('mensagem_sucesso','Autor cadastrado com sucesso!');
+                return view('novo-autor');
+            }
+            catch(QueryException $e){
+                \Session::flash('mensagem_aviso','Por favor, preencha todos os campos!');
+                return view('novo-autor');
+
+            }
+            
         }
         public function edita_Autor($id)
         {
@@ -30,10 +38,16 @@ class controllerAutor extends Controller
 
         public function atualiza_Autor($id, Request $request)
         {
-            $autor = Autor::findOrFail($id);
-            $autor->update($request->all());
-            \Session::flash('mensagem_sucesso','Autor atualizado com sucesso!');
-            return Redirect::to ('autor/'.$autor->id.'/edita');
+            try{
+                $autor = Autor::findOrFail($id);
+                $autor->update($request->all());
+                \Session::flash('mensagem_sucesso','Autor atualizado com sucesso!');
+                return Redirect::to ('autor/'.$autor->id.'/edita');
+            }
+            catch(QueryException $e){
+                \Session::flash('mensagem_aviso','Por favor, preencha todos os campos!');
+                return Redirect::to ('autor/'.$autor->id.'/edita');
+            }
             
 
         }

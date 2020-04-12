@@ -7,6 +7,8 @@ use App\Editora;
 use App\Autor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\QueryException;
+
 
 class controllerLivro extends Controller
 {
@@ -25,10 +27,17 @@ class controllerLivro extends Controller
     }
    
         public function salva_Livro(Request $request) {
-            $livro = new Livro();
-            $livro = $livro->create($request->all());
-            \Session::flash('mensagem_sucesso','Livro cadastrado com sucesso!');
-            return Redirect::to ('livro');
+            try{
+                $livro = new Livro();
+                $livro = $livro->create($request->all());
+                \Session::flash('mensagem_sucesso','Livro cadastrado com sucesso!');
+                return Redirect::to ('livro');
+            }
+            catch(QueryException $e){
+                \Session::flash('mensagem_aviso','Por favor, preencha todos os campos!');
+                return Redirect::to ('livro');
+            }
+            
         }
 
         public function edita_Livro($id)
@@ -42,10 +51,17 @@ class controllerLivro extends Controller
 
         public function atualiza_Livro($id, Request $request)
         {
-            $livro = Livro::findOrFail($id);
-            $livro->update($request->all());
-            \Session::flash('mensagem_sucesso','Livro atualizado com sucesso!');
-            return Redirect::to ('livro/'.$livro->id.'/edita');
+            try{
+                $livro = Livro::findOrFail($id);
+                $livro->update($request->all());
+                \Session::flash('mensagem_sucesso','Livro atualizado com sucesso!');
+                return Redirect::to ('livro/'.$livro->id.'/edita');
+            }
+            catch(QueryException $e){
+                \Session::flash('mensagem_aviso','Por favor, preencha todos os campos!');
+                return Redirect::to ('livro/'.$livro->id.'/edita');
+            }
+            
             
 
         }

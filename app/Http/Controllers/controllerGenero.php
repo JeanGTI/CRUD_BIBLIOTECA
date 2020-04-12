@@ -19,10 +19,17 @@ class controllerGenero extends Controller
         return view('novo-genero');
     }
         public function salva_Genero(Request $request) {
-            $genero = new Genero();
-            $genero = $genero->create($request->all());
-            \Session::flash('mensagem_sucesso','Genero cadastrado com sucesso!');
-            return view('novo-genero');
+            try{
+                $genero = new Genero();
+                $genero = $genero->create($request->all());
+                \Session::flash('mensagem_sucesso','Genero cadastrado com sucesso!');
+                return view('novo-genero');
+            }
+            catch(QueryException $e){
+                \Session::flash('mensagem_aviso','Por favor, preencha todos os campos!');
+                return view('novo-genero');
+            }
+            
         }
         public function edita_Genero($id)
         {
@@ -32,10 +39,17 @@ class controllerGenero extends Controller
 
         public function atualiza_Genero($id, Request $request)
         {
-            $genero = Genero::findOrFail($id);
-            $genero->update($request->all());
-            \Session::flash('mensagem_sucesso','Genero atualizado com sucesso!');
-            return Redirect::to ('genero/'.$genero->id.'/edita');
+            try{
+                $genero = Genero::findOrFail($id);
+                $genero->update($request->all());
+                \Session::flash('mensagem_sucesso','Genero atualizado com sucesso!');
+                return Redirect::to ('genero/'.$genero->id.'/edita');
+            }
+            catch(QueryException $e){
+                \Session::flash('mensagem_aviso','Por favor, preencha todos os campos!');
+                return Redirect::to ('genero/'.$genero->id.'/edita');
+            }
+            
             
 
         }

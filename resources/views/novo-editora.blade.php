@@ -14,7 +14,9 @@
                 @if(Session::has('mensagem_sucesso'))
                     <div class = "alert alert-success">{{Session::get('mensagem_sucesso')}}</div>
                 @endif              
-
+                @if(Session::has('mensagem_aviso'))
+                    <div class = "alert alert-error">{{Session::get('mensagem_aviso')}}</div>
+                @endif
                 @if(Request::is('*/edita'))
                     {{ Form::model($editora, ['method'=>'PATCH','url'=>'editora/'.$editora->id])}}
                 @else                

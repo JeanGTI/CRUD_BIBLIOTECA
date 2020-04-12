@@ -17,10 +17,17 @@ class controllerEditora extends Controller
         return view('novo-editora');
     }
         public function salva_Editora(Request $request) {
-            $editora = new Editora();
-            $editora = $editora->create($request->all());
-            \Session::flash('mensagem_sucesso','Editora cadastrada com sucesso!');
-            return view('novo-editora');
+            try{
+                $editora = new Editora();
+                $editora = $editora->create($request->all());
+                \Session::flash('mensagem_sucesso','Editora cadastrada com sucesso!');
+                return view('novo-editora');
+            }
+            catch(QueryException $e){
+                \Session::flash('mensagem_aviso','Por favor, preencha todos os campos!');
+                return view('novo-editora');
+            }
+            
         }
         public function edita_Editora($id)
         {
@@ -30,10 +37,18 @@ class controllerEditora extends Controller
 
         public function atualiza_Editora($id, Request $request)
         {
-            $editora = Editora::findOrFail($id);
-            $editora->update($request->all());
-            \Session::flash('mensagem_sucesso','Editora atualizada com sucesso!');
-            return Redirect::to ('editora/'.$editora->id.'/edita');
+            try{
+                $editora = Editora::findOrFail($id);
+                $editora->update($request->all());
+                \Session::flash('mensagem_sucesso','Editora atualizada com sucesso!');
+                return Redirect::to ('editora/'.$editora->id.'/edita');
+            }
+            catch(QueryException $e){
+                \Session::flash('mensagem_aviso','Por favor, preencha todos os campos!');
+                return Redirect::to ('editora/'.$editora->id.'/edita');
+
+            }
+            
             
 
         }
