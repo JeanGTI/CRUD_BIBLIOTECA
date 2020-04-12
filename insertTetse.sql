@@ -56,17 +56,6 @@ INSERT INTO `livro` (`id`, `titulo`, `ano_lancamento`, `autor_id`, `editora_id`,
 (6, 'O Livro', '2000-09-02', 5, 5, 4, '2020-04-12 00:29:52', '2020-04-12 00:29:52'),
 (7, 'O Teste', '2020-04-10', 5, 7, 6, '2020-04-12 01:03:39', '2020-04-12 01:03:39');
 
---
--- Extraindo dados da tabela `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2019_08_19_000000_create_failed_jobs_table', 1),
-(3, '2020_04_09_122822_autor', 1),
-(4, '2020_04_09_123226_editora', 1),
-(5, '2020_04_09_123245_genero', 1),
-(6, '2020_04_09_123259_livro', 1);
 
 --
 -- Extraindo dados da tabela `users`
