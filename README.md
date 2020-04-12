@@ -32,8 +32,10 @@ No Mysql cria a base de dados com o mesmo nome do `DB_DATABASE=` **biblioteca**
 Rodar também o comando para funcionamento do CSS e JavaScript
 >npm run dev
 
-Para gerar chave e criação das tabelas através do Power Shell, Terminal ou CMD, e digitar o seguinte comando:
+Para gerar chave através do Power Shell, Terminal ou CMD, e digitar o seguinte comando:
 >php artisan key:generate
+
+Pra criação de tabelas:
 >php artisan migrate
 
 E para iniciar o servidor digite:
