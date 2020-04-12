@@ -14,6 +14,9 @@
                     @if(Session::has('mensagem_sucesso'))
                     <div class = "alert alert-success">{{Session::get('mensagem_sucesso')}}</div>
                     @endif
+                    @if(Session::has('mensagem_aviso'))
+                    <div class = "alert alert-error">{{Session::get('mensagem_aviso')}}</div>
+                    @endif
                         <th>Titulo</th>
                         <th>Ano de lançamento</th>
                         <th>Autor</th>

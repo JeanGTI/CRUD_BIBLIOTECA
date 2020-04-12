@@ -35,7 +35,7 @@ class controllerLivro extends Controller
             }
             catch(QueryException $e){
                 \Session::flash('mensagem_aviso','Por favor, preencha todos os campos!');
-                return Redirect::to ('livro');
+                return Redirect::to ('livro/novo');
             }
             
         }
